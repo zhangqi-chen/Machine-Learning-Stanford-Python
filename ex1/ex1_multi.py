@@ -21,7 +21,7 @@ print('Normalizing Features ...')
 X, mu, sigma = featureNormalize(X)
 
 # Add intercept term to X
-X = np.concatenate((np.ones((m, 1)), X), 1)
+X = np.c_[np.ones(m), X]
 
 #%% Gradient Descent
 # Choose some alpha value

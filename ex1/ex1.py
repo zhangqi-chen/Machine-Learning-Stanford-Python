@@ -5,17 +5,15 @@ from ex1_func import plotData, computeCost, gradientDescent
 
 # Read data from ex1data1.txt
 data = np.loadtxt('ex1data1.txt', delimiter=',')
-X, y = data[:, 0], data[:, 1]
+X = data[:, [0]]
+y = data[:, [1]]
 m = len(y)
 
 #%% Plot data
 plotData(X, y)
 
 #%% Cost and Gradient descent
-X = np.ones([m, 2])  # Add a column of ones to x
-y = np.ones([m, 1])
-X[:, 1] = data[:, 0]
-y[:, 0] = data[:, 1]
+X = np.c_[np.ones(m), X]    # Add a column of ones to x
 theta = np.zeros([2, 1])    # initialize fitting parameters
 
 # Some gradient descent settings
