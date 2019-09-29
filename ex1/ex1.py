@@ -1,11 +1,11 @@
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from ex1_func import plotData, computeCost, gradientDescent
 
 # Read data from ex1data1.txt
-data = pd.read_csv('ex1data1.txt', header=None)
-X, y = data[0], data[1]
+data = np.loadtxt('ex1data1.txt', delimiter=',')
+X, y = data[:, 0], data[:, 1]
 m = len(y)
 
 #%% Plot data
@@ -14,8 +14,8 @@ plotData(X, y)
 #%% Cost and Gradient descent
 X = np.ones([m, 2])  # Add a column of ones to x
 y = np.ones([m, 1])
-X[:, 1] = data[0]
-y[:, 0] = data[1]
+X[:, 1] = data[:, 0]
+y[:, 0] = data[:, 1]
 theta = np.zeros([2, 1])    # initialize fitting parameters
 
 # Some gradient descent settings
